@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Prismagic - Prisma Studio UI Tweaks",
+  "version": "1.0",
+  "description": "Repositions the filter button in Prisma Studio for easier access",
+  "options_page": "options.html",
+  "permissions": ["activeTab", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

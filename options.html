@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prismagic - Settings</title>
+    <style>
+      /* Base layout */
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+
+      /* URL entry row styling */
+      .url-entry {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: center;
+      }
+
+      .url-entry input {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      /* Button styles */
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+      }
+
+      button.remove {
+        background-color: #f44336;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      /* Help text and code examples */
+      .help-text {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 20px;
+      }
+
+      .help-text .example {
+        margin-left: 24px;
+        margin-top: 4px;
+        margin-bottom: 8px;
+      }
+
+      .help-text code {
+        background-color: #f5f5f5;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", monospace;
+        font-size: 0.9em;
+        color: #333;
+        border: 1px solid #e0e0e0;
+        display: inline-block;
+      }
+
+      /* Toggle switch */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      .mode-label {
+        font-size: 0.8em;
+        color: #666;
+        width: 40px;
+        text-align: right;
+        margin-right: 8px;
+      }
+
+      #status {
+        margin-top: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Where should Prismagic be active?</h2>
+
+    <div class="help-text">
+      Add URL patterns where Prismagic should be active. Each entry can be in
+      Simple or Regex mode:<br />
+      - Simple mode: Just paste your URL directly, special characters will be
+      escaped automatically<br />
+      <div class="example">
+        Example: <code>https://example.com/dashboard/</code>
+      </div>
+      - Regex mode: Write custom patterns to match multiple URLs<br />
+      <div class="example">
+        Example (wildcard): <code>*://localhost:5555/*</code>
+      </div>
+      <div class="example">
+        Example (specific paths):
+        <code>https://example\.com/(dashboard|admin)/</code>
+      </div>
+    </div>
+
+    <div id="url-list">
+      <!-- URL entries will be dynamically added here -->
+    </div>
+
+    <button id="add-url">Add URL Pattern</button>
+    <button id="save">Save Changes</button>
+    <p id="status"></p>
+
+    <script src="options.js"></script>
+  </body>
+</html>

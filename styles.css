@@ -1,0 +1,32 @@
+/* Target container that either:
+   - has class containerWithoutFilters
+   - or has a child with class filterControlsRow */
+.prismagic [class*="_container"][class*="_containerWithoutFilters"],
+.prismagic
+  [class*="_container"]:has(> [class*="_filterControlsRow"]):has(
+    > [class*="_filter"]
+  ) {
+  flex-wrap: wrap;
+}
+
+/* Target filter controls row - base styles */
+.prismagic [class*="_filterControlsRowWithoutFilters"] {
+  flex-basis: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Override for the variant with filters */
+.prismagic
+  [class*="_filterControlsRow"]:not(
+    [class*="_filterControlsRowWithoutFilters"]
+  ) {
+  flex-basis: 100%;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Target filter controls row - base styles */
+.prismagic [class*="_infoBox"] {
+  padding-top: 10px;
+}
